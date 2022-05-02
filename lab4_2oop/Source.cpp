@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdio.h>
 #include "Norma.hpp"
 #include "Complex.hpp"
 #include "Vector.hpp"
@@ -9,39 +10,29 @@
 using namespace std;
 
 int main(){
+    NormaClass **ptr = new NormaClass*[3];
     
-    Complex complex_obj;
-    complex_obj.SetX(2);
-    complex_obj.SetY(3);
-    complex_obj.SetZ();
-    cout << complex_obj.Norma()<<endl;
+    cout << "Complex:" << endl;
+    ptr[0] = new Complex(2, 3);
+    cout << "Norma = " << ptr[0]->Norma() << endl;
+    cout << "Object type: " << typeid(*ptr[0]).name()<<endl;
+    cout << "Base class: " << typeid(ptr[0]).name()<<endl;
     
-    Vector vector1;
-    vector1.SetVector(2, 2, 2, 2, 2, 2, 2, 2, 2, 2);
-    cout << vector1.Norma() << endl;
-    
-    Array arr1;
-    arr1.SetArr(1, -2, -3, -1);
-    cout << arr1.Norma() << endl;
     cout << endl;
     
-    NormaClass **check = new NormaClass*[3];
-    check[0] = new Complex();
-    check[1] = new Vector();
-    check[2] = new Array();
+    cout << "Vector:" << endl;
+    ptr[1] = new Vector(2, 2, 2, 2, 2, 2, 2, 2, 2, 2);
+    cout << "Norma = " << ptr[1]->Norma() << endl;
+    cout << "Object type: " << typeid(*ptr[1]).name()<<endl;
+    cout << "Base class: " << typeid(ptr[1]).name()<<endl;
     
-    check[0]->Norma();
-    check[1]->Norma();
-    check[2]->Norma();
+    cout << endl;
     
-    Complex* pd = new Complex;
-    NormaClass* pb = pd;
-    
-    cout << typeid(pb).name()<<endl;
-    cout << typeid(*pb).name()<<endl;
-    cout << typeid(pd).name()<<endl;
-    cout << typeid(*pd).name()<<endl;
-    
+    cout << "Array:" << endl;
+    ptr[2] = new Array(1, -2, -3, -1);
+    cout << "Norma = " << ptr[2]->Norma() << endl;
+    cout << "Object type: " << typeid(*ptr[2]).name()<<endl;
+    cout << "Base class: " << typeid(ptr[2]).name()<<endl;
     
     return 0;
 }
